@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Populate</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'populate.css' %}">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" 
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="   
+    crossorigin="anonymous"></script>
+    <script src="static/script.js"></script>
+    <script>
+        $(document).ready(build_populate)
+    </script>
+</head>
+<body>
+    <header class='row'>
+        <h2>Hello {{user.first_name}}!</h2>
+        <a href='/dashboard'>Back</a>
+        <a href='/cleardb'>CLEAR DATABASE</a>
+        <a href='/logout'>Log Out</a>
+    </header>
+    <header>
+        <p>Pokemon: {{pokemon.count}}</p>
+        <p>types: {{types.count}}</p>
+        <p>abilities: {{abilities.count}}</p>
+        <p>moves: {{moves.count}}</p>
+        <p>games: {{games.count}}</p>
+    </header>
+    <form action="/filldb" method="post" id='populate'>
+        {%csrf_token%}
+        <button type="submit">Submit</button>
+        
+    </form>
+</body>
+</html>

@@ -1,0 +1,122 @@
+html *{
+    max-width: 900px;
+}
+html{
+    /* background-color: lightskyblue; */
+    background: radial-gradient(circle, rgba(117,185,223,1) 0%, rgba(125,206,250,1) 68%, rgba(115,208,255,1) 100%);
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 40px solid gold;
+    min-height: 670px;
+}
+.logreg{
+    margin:30px;
+}
+.logreg p{
+    display: flex;
+    justify-content: space-between;
+}
+h1, h3{
+    text-align: center;
+}
+#boxes{
+    width: 500px;
+    height: 360px;
+    overflow: scroll;
+    border: 5px solid grey;
+    border-radius: 10px;
+}
+#no_results_message{
+    width:240px;
+    height: 100px;
+    margin: 140px;
+    
+}
+#info{
+    width: 310px;
+    height: 530px;
+    overflow: scroll;
+    border: 5px solid grey;
+    border-radius: 10px;
+    padding:20px;
+}
+li{
+    margin:2px;
+    padding:3px;
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.topalign{
+    align-items:baseline ;
+}
+.column{
+    display: flex;
+    flex-direction: column;
+}
+.sprite{
+    width: 100px;
+    height: 100px;
+}
+#filters{
+    border: 5px solid grey;
+    border-radius: 10px;
+    padding:10px;
+}
+#typefilters{
+    max-width: 280px;
+    max-height: 300px;
+}
+.region{
+    margin-left: 10px;
+}
+#search{
+    margin-right: 20px;
+}
+.filterrow{
+    display: flex;
+    justify-content: space-between;
+    margin:3px;
+    margin-right: 10px;
+    width:80px;
+}
+.filterblock{
+    display: inline-block;
+}
+.box{
+    display:inline-block;
+    width: 100px;
+    height: 100px;
+}
+.favorite{
+    width: 96px;
+    height: 96px;
+    background-color:rgb(254, 254, 40);
+    border: 2px solid gold;
+    border-radius: 15px;
+}
+.selected{
+    background-color: lightgray;
+    border: 3px solid gold;
+    width: 94px;
+    height: 94px;
+    border-radius: 5px;
+}
+.favorite.selected{
+    background-color:rgb(198, 198, 127);
+    border: 3px solid rgba(255, 217, 0, 0.858);
+    width: 94px;
+    height: 94px;
+    border-radius: 15px;
+}
+#favorites_list{
+    max-height: 150px;
+    overflow: scroll;
+}
+#favorites_list *{
+    margin:10px;
+    display: inline-block;
+}

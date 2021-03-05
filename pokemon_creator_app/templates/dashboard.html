@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    {%load static%}
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <script src="https://code.jquery.com/jquery-3.5.1.js" 
+    integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="   
+    crossorigin="anonymous"></script>
+    <script src="static/script.js"></script>
+    <script>
+        $(document).ready(build_dashboard)
+    </script>
+</head>
+<body>
+    <header class='row'>
+        <h2>Hello {{user.first_name}}!  Choose your favorite Pokemon!</h2>
+        <a href='/logout'>Log Out</a>
+    </header>
+    <div class='row'>
+        <div class='column'>
+            <div id='boxes'>
+                <h2 id='no_results_message'>
+                    There are no pokemon that fit that description
+                </h2>
+            </div>
+            <form action='/load_dashboard' method='post' class='row' id='filters'>
+                {%csrf_token%}
+                <div id='typefilters'></div>
+                <div class='column'>
+                    <input type="hidden" id='region_info' value={{region_info}}>
+                    <div class='row'>Kanto: <input type="radio" name='region' id='kanto' class="region" value='0-151-kanto' ></div>
+                    <div class='row'>Johto: <input type="radio" name='region' id='johto' class="region" value='151-251-johto' ></div>
+                    <div class='row'>Hoenn: <input type="radio" name='region' id='hoenn' class="region" value='251-386-hoenn' ></div>
+                    <div class='row'>Sinnoh: <input type="radio" name='region' id='sinnoh' class="region" value='386-494-sinnoh' ></div>
+                    <div class='row'>Unova: <input type="radio" name='region' id='unova' class="region" value='494-649-unova' ></div>
+                    <div class='row'>Kalos: <input type="radio" name='region' id='kalos' class="region" value='649-721-kalos' ></div>
+                    <div class='row'>Alola: <input type="radio" name='region' id='alola' class="region" value='721-809-alola' ></div>
+                    <div class='row'>Galar: <input type="radio" name='region' id='galar' class="region" value='809-898-galar' ></div>
+                    <div class='row'>Special: <input type="radio" name='region' id='special' class="region" value='898-1200-special' ></div>
+                    <div class='row'>All: <input type="radio" name='region' id='all' class="region" value='0-1200-all' ></div>
+                </div>
+                <button type='submit' id='search'>Search!</button>
+            </form>
+        </div>
+        <div id='info'>
+            <b>
+                <p>Name: <span id='name'></span></p>
+                <p>Types: <span id='types'></span></p>
+                Stats:
+            </b>
+            <ul>
+                <b>
+                    <li>HP: <span id='hp'></span></li>
+                    <li>AT: <span id='attack'></span></li>
+                    <li>DF: <span id='defense'></span></li>
+                    <li>SPAT: <span id='special-attack'></span></li>
+                    <li>SPDF: <span id='special-defense'></span></li>
+                    <li>SPD: <span id='speed'></span></li>
+                </b>
+            </ul>
+            <div class='row'>
+                <form action="/add_favorite" method="post">
+                    {%csrf_token%}
+                    <button type="submit" class='favorites_button'>Add to Favorites</button>
+                    <input type="hidden" name='api_id' class='api_id' value=-1>
+                </form>
+                <form action="/remove_favorite" method="post">
+                    {%csrf_token%}
+                    <button type="submit" class='favorites_button'>Remove from Favorites</button>
+                    <input type="hidden" name='api_id' class='api_id' value=-1>
+                </form>
+            </div>
+            Favorites: <button id='show_favorites'>Show favorites</button><div id='favorites_list'>
+                <input type="hidden" id='favorites' value={{user.favorites}}>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
